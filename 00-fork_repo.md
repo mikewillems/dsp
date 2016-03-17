@@ -55,6 +55,6 @@ Here's your first chance to practice this:
 
 What is your favorite [emoji](http://www.emoji-cheat-sheet.com/)?
 
-My favorite emoji is :grin:
+My favorite emoji from there is :triumph:
 
-
+changed to allow restaging

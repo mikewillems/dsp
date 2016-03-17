@@ -59,7 +59,7 @@ We will also use Jupyter (IPython) notebooks, but this does not remove the need 
 
 What terminal editor will you use? How did you make your decision?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I am a ViM guy all the way...
 
 --
 
@@ -67,6 +67,9 @@ What terminal editor will you use? How did you make your decision?
 
 What graphical editor will you use? How did you make your decision? What are some interesting features of your editor? What are some useful keyboard shortcuts for your editor? How do you customize your editor?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I really like sublime text, which imo has more powerful highlighting interface than ViM, but will use ViM in almost all cases. If I need to hack JS or HTML, then out comes sublime text. I also want to give PyCharm a try.
 
- 
+In my .vimrc, I have jj mapped to escape for entering command mode, which is nice. dd for delete line x for deleting a line and y / p for yank / put are probably the most obvious and oft used. I also map KK / LL to home / end and NN PP to next and previous tabs.
+
+
+changed by adding this line to allow restaging

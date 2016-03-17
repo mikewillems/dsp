@@ -46,15 +46,13 @@ cross-platform.
 
 Did you install Python 2 or 3? Why?  
 
-I have python 2 already installed, so I'll stick to that. Most tutorials also recommend python 2. 
+I installed both with 3 as default because I want to support the growth to 3. 3 also has nicer syntax sometimes (that is stricter and more C-like, which I prefer). On the other hand, I have had a very much easier time using external libraries with 2, and dislike the removal of parameter packing. It makes something that is already confusing and imo juvenile for a language even more difficult to understand. So if I have to do that using someone else's code, I really don't want to work around it in a weird way.
 
 ###Q2. Which Python Version Installed   
 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
-at terminal, type python -V
-(I have version 2.7.10)
-
+At the prompt, simply typing python -V should display it.
  
 
-
+changed to allow restaging by adding this line
