@@ -70,6 +70,3 @@ What graphical editor will you use? How did you make your decision? What are som
 I really like sublime text, which imo has more powerful highlighting interface than ViM, but will use ViM in almost all cases. If I need to hack JS or HTML, then out comes sublime text. I also want to give PyCharm a try.
 
 In my .vimrc, I have jj mapped to escape for entering command mode, which is nice. dd for delete line x for deleting a line and y / p for yank / put are probably the most obvious and oft used. I also map KK / LL to home / end and NN PP to next and previous tabs.
-
-
-changed by adding this line to allow restaging

@@ -53,6 +53,3 @@ I installed both with 3 as default because I want to support the growth to 3. 3 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
 At the prompt, simply typing python -V should display it.
- 
-
-changed to allow restaging by adding this line
