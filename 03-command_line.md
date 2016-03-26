@@ -64,9 +64,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 
 What does `xargs` do? Give an example of how to use it.
 
-xargs breaks up long bash command argument lists into chunks that can be handled by various utilities, applying the specified command piecewise to each chunk. Generally, this is application of typical bash commands to many files. One example would be making a file for each name in a list such that these files can be written to programmatically. Say that you have a huge list of people and that each one needs to have some info added. You can grep for the list of .npp filenames:<br/><t>
-    grep npp filenames.txt
- then use xargs to touch each filename:<br/></t>
-    | xargs touch</br></br>
-
-changed by adding this line to allow restaging
+xargs breaks up long bash command argument lists into chunks that can be handled by various utilities, applying the specified command piecewise to each chunk. Generally, this is application of typical bash commands to many files. One example would be making a file for each name in a list such that these files can be written to programmatically. Say that you have a huge list of people and that each one needs to have some info added. You can grep for the list of .npp filenames:<br/>
+'grep npp filenames.txt'
+then use xargs to touch each filename:<br/>
+'| xargs touch'
