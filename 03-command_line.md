@@ -13,17 +13,17 @@ these in a couple of hours.
 
 Make a cheat sheet for yourself: a list of at least **ten** commands and what they do, focused on things that are new, interesting, or otherwise worth remembering.
 
-1. 'grep regX files_or_dirs' but defaults to current directory. (just reviewed grep, but still worth it)
-2. if 'man _thing_' or 'help _thing_' doesn't work, '_thing_ --help' may be useful
+1. `grep regX files_or_dirs` but defaults to current directory. (just reviewed grep, but still worth it)
+2. if `man _thing_` or `help _thing_` doesn't work, `_thing_ --help` may be useful
 piping to send output multiple places by stacking the pipes.
-3. 'export ENV-VAR-NAME=env-var-value'
-4. equivalently, '$env:ENV-VAR-NAME=env-var-value'
-5. 'unset env-var-name'
-6. '$env:MY_ENV_NAME' (redirect or pipe to editor or console) - shows content (if any) of that env var
-7. 'get-childitem Env:'   shows all the environment variables defined (unless filtered by grep, e.g.)
-8. '(set -o posix ; set )' _pipe or redirect output_    shows all terminal but NOT environmental (i.e. non-exported variables). 
-9. 'export -n ENV-VAR-NAME'   demotes ENV-VAR-NAME to a shell variable.
-10. '_some-command_ > /dev/null 2>&1 &'    can't not throw this in here as a reminder: runs some-command in the background, silencing all output by redirecting to devnull. I used to bash alias 'bkg' to do this appendix for when I want to open a program from the terminal, but now most linux flavors allow you to MOD- and start typing program names, which is usually faster.
+3. `export ENV-VAR-NAME=env-var-value`
+4. equivalently, `$env:ENV-VAR-NAME=env-var-value`
+5. `unset env-var-name`
+6. `$env:MY_ENV_NAME` (redirect or pipe to editor or console) - shows content (if any) of that env var
+7. `get-childitem Env:`   shows all the environment variables defined (unless filtered by grep, e.g.)
+8. `(set -o posix ; set )` _pipe or redirect output_    shows all terminal but NOT environmental (i.e. non-exported variables). 
+9. `export -n ENV-VAR-NAME`   demotes ENV-VAR-NAME to a shell variable.
+10. `_some-command_ > /dev/null 2>&1 &`    can't not throw this in here as a reminder: runs some-command in the background, silencing all output by redirecting to devnull. I used to bash alias 'bkg' to do this appendix for when I want to open a program from the terminal, but now most linux flavors allow you to MOD- and start typing program names, which is usually faster.
 
 
 ---
@@ -39,14 +39,15 @@ What do the following commands do:
 `ls -t`  
 `ls -Glp`  
 
-list files in a directory (current if no argument)<br/>
-list files including hidden files (which start with a '.')<br/>
-list files with details (long listing)<br/>
-list files with size in human readable format<br/>
-list files with all modifications of l, a, and h<br/>
-list files with modification time<br/>
-list files, inhibiting group info but otherwise listing metadata and appending a filetype indicator to each filename<br/>
-
+<ul>
+<li>list files in a directory (current if no argument)
+</li><li>list files including hidden files (which start with a '.')
+</li><li>list files with details (long listing)
+</li><li>list files with size in human readable format
+</li><li>list files with all modifications of l, a, and h
+</li><li>list files with modification time
+</li><li>list files, inhibiting group info but otherwise listing metadata and appending a filetype indicator to each filename</li>
+</ul>
 ---
 
 ###Q3.  More List Files in Unix  
@@ -65,6 +66,6 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 What does `xargs` do? Give an example of how to use it.
 
 xargs breaks up long bash command argument lists into chunks that can be handled by various utilities, applying the specified command piecewise to each chunk. Generally, this is application of typical bash commands to many files. One example would be making a file for each name in a list such that these files can be written to programmatically. Say that you have a huge list of people and that each one needs to have some info added. You can grep for the list of .npp filenames:<br/>
-'grep npp filenames.txt'
-then use xargs to touch each filename:<br/>
-'| xargs touch'
+<ul><li>`grep npp filenames.txt`</li></ul>
+then use xargs to touch each filename:
+<ul><li>`| xargs touch`</li></ul>
