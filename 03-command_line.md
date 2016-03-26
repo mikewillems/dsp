@@ -53,6 +53,7 @@ What do the following commands do:
 ###Q3.  More List Files in Unix  
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
+
 1. -R is probably my most used, which lists recursively. I tried to write a windows interface to recursively browse to a user-variable depth.
 2. -u sort by time last run/used - this is very useful for modifying the last-edited version of a file when going back through historical versions for bug fixes, but I've found it finnicky between systems.
 3. -Q This is another I .bashrc alias to happen every time just because I think it's easier to read, and it encloses file names in double quotes.
