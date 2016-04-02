@@ -41,11 +41,11 @@ from operator import attrgetter
 email\_list=\[importAccountList(accounts.db)\]
 emails\_by\_creation\_date=sorted(email\_list, key=attrgetter('creationDate'))
 ```
-# If the email data fields were stored in a tuple instead of an object for each account, then I would have to import itemgetter and use the itemgetter(field\_index) instead.
+If the email data fields were stored in a tuple instead of an object for each account, then I would have to import itemgetter and use the itemgetter(field\_index) instead.
 <br><br>
 Sets are tricky, because most of the examples are mathematical in order to really justify using this data structure. Even so, one example might be a set of addresses. If I am a delivery service, I want to quickly check whether an address is in my database of deliverable addresses before looking up where it is and how much it would cost. So I might implement a seperate address set where each of the addresses is stored as a string with a standard formatting. (In reality, I would format the strings upon input and alphabetize the whole thing so that search would be very fast using a list, but bear with me...) 
 <br><br>
-I then create attempt a lookup with the new address:<br>
+I then attempt a lookup with the new address:<br>
 ```
 if newAddress in addressDB:
 	lookupAddressInfo()
