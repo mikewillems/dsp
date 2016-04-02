@@ -37,20 +37,41 @@ I want to store a collection of email accounts, each containing an "account" obj
 ```
 # note to self - apparently underscores are significant in markdown files
 from operator import attrgetter
-#assume accounts.db has a list of account tuples
-email\_list=\[importAccountList(accounts.db)\]
-emails\_by\_creation\_date=sorted(email\_list, key=attrgetter('creationDate'))
+#assume accounts.py has a list of account tuples
+email_list=\[importAccountList(accounts.db)\]
+emails_by_creation_date=sorted(email_list, key=attrgetter('creationDate'))
 ```
 If the email data fields were stored in a tuple instead of an object for each account, then I would have to import itemgetter and use the itemgetter(field\_index) instead.
 <br><br>
 Sets are tricky, because most of the examples are mathematical in order to really justify using this data structure. Even so, one example might be a set of addresses. If I am a delivery service, I want to quickly check whether an address is in my database of deliverable addresses before looking up where it is and how much it would cost. So I might implement a seperate address set where each of the addresses is stored as a string with a standard formatting. (In reality, I would format the strings upon input and alphabetize the whole thing so that search would be very fast using a list, but bear with me...) 
 <br><br>
-I then attempt a lookup with the new address:<br>
+In this case, I write a function to import addresses, probably in csv, and store them in a set. We were required to set up pandas, so I'll assume that's fair game and not roll a reader directly from scratch. Instead, I use the following and also the pickle library:
 ```
-if newAddress in addressDB:
+import pandas as pd
+import cpickle as pk
+
+reader=pd.read_csv(engine='c',filepath_or_buffer='https://www.address_list_provider.com/address_list.csv',chunksize=1)
+address_set=set()
+for chunk in reader:
+	address_set.add(str(chunk))
+f=open('/var/local/mailing_pos/address_set.save','wb')
+pk.dump(address_set,f,-1)
+f.close()
+```
+
+The next time I wanted to load the set, I could simply do it with 
+```
+f=open(addr_set_path,'rb')
+address_set=pk.load(f)
+f.close()
+```
+
+Now, with the data in the address\_set variable, I attempt a lookup with the new address:<br>
+```
+if newAddress in address_set:
 	lookupAddressInfo()
 else:
-	raise ADDR\_NOT\_RECOGNIZED
+	raise ADDR_NOT_RECOGNIZED
 ```
 
 ---
