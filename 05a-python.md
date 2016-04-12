@@ -80,7 +80,22 @@ else:
 
 Describe Python's `lambda`. What is it, and what is it used for? Give at least one example, including an example of using a `lambda` in the `key` argument to `sorted`.
 
-The lambda construct is, first and foremost, very cool. That aside, it is a syntax for function definition that allows functions to 
+The lambda construct is a convenient and intuitive way to combine the C concepts of abstract and inline functions. A lambda is a function which can be passed anonymously (in addition to just via a reference), and whose definition syntax allows it to be defined within other functions. More importantly, the anonymity prevents name conflicts where a function is needed for a parameter (in callback syntax, e.g., though python doesn't name them "callbacks"), but where multiple functions might be used for the same condition under different contexts.
+
+Say you had a list, and wanted to use pyspread (a great library by Martin Manns) to display it and play with the values. You want to implement a sort function on all of the data points in a column (after the first) that initiates upon clicking the cell. I haven't fully learned how to do this, but presumably, a function is taken as an argument for a click in the GUI. You could specify this function as follows (some pseudocode is used):
+
+```
+import pyspread as sp
+
+--- 
+Assume that you have a spreadsheet object, S, which has location data in the first column of the first table. The object stored by each cell 2-N in column 1 is a pair of form (latitude, longitude) which you wish to sort by latitude to split into time zones. Now assume that there is a button for which you must provide a sorting function. 	
+---
+
+# other functions...
+
+
+
+```
 
 ---
 
@@ -88,7 +103,29 @@ The lambda construct is, first and foremost, very cool. That aside, it is a synt
 
 Explain list comprehensions. Give examples and show equivalents with `map` and `filter`. How do their capabilities compare? Also demonstrate set comprehensions and dictionary comprehensions.
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+List comprehensions are awesome - it's a way of constructing lists by giving a formula for each term, and the syntax is close to mathematical notation (yay!). The main limitation (and what makes it not as powerful for certain scenarios) is the clarity and flexibility with which you can increment over a given range. The syntax for list comprehensions cannot process complex statements (past for and if loops), while the lambda used by map/filter can process a dynamic
+function passed in at runtime.
+
+For example, the following functions output equivalent code:
+
+```
+listEx = 'Metis is the best'.split()
+
+def listComp():
+    print [[word[len(word)-1]] for word in listEx]
+
+def mapList():
+    print map(lambda word: word[len(word)-1], listEx)
+```
+
+Set and dictionary comprehensions:
+
+```
+# Dictionary comprehensions take an argument for the key # for a particular value and assign it programmatically.
+
+diction={x: x**2 for x in range(5,10)}
+
+```
 
 ---
 
@@ -102,8 +139,11 @@ a.
 date_start = '01-02-2013'    
 date_stop = '07-28-2015'
 ```
+```
+from datetime import *
+difference = datetime.datetime.strptime(date_stop,%m-%d-%Y) - datetime.datetime.strptime(date_start)
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE (answer will be in number of days)
+```
 
 b.  
 ```
