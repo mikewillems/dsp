@@ -6,14 +6,17 @@
 
 # The below skeleton is optional.  You can use it or you can write the script with an approach of your choice.
 
-
 import csv
 
-  def read_data(data):
-   # COMPLETE THIS FUNCTION
+def minvaldif(fname,lab1,lab2):
+    with open(fname) as f:
+        reader = csv.DictReader(f)
+        firstrow = next(reader)
+        mindif = abs(int(firstrow[lab1])-int(firstrow[lab2]))
+        for row in reader:
+            dif = abs(int(row[lab1])-int(row[lab2]))
+            if dif < mindif:
+                mindif = dif
+        return mindif
 
-  def get_min_score_difference(self, parsed_data):
-    # COMPLETE THIS FUNCTION
-
-  def get_team(self, index_value, parsed_data):
-    # COMPLETE THIS FUNCTION
+minvaldif('football.csv','Goals','Goals Allowed')

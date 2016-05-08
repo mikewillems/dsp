@@ -88,11 +88,13 @@ Say you had a list, and wanted to use pyspread (a great library by Martin Manns)
 import pyspread as sp
 
 --- 
-Assume that you have a spreadsheet object, S, which has location data in the first column of the first table. The object stored by each cell 2-N in column 1 is a pair of form (latitude, longitude) which you wish to sort by latitude to split into time zones. Now assume that there is a button for which you must provide a sorting function. 	
+Assume that you have a spreadsheet object, S, which has location data in the first column of the first table. The object stored by each cell 2-N in column 1 is a pair of form (latitude, longitude) which you wish to sort by longitude to split into time zones. Now assume that there is a button for which you must provide a sorting function. To allow encapsulation, the button will be defined to interact with everything else behind the scenes, and it will take a function which will determine what happens when it gets pressed.
+
+Specifically, the button will have been defined with the tuple in column one as its action object. Then what to do on the button press for the particular cell's button will follow:
 ---
 
-# other functions...
-
+# other function definitions...
+my-button.on_press(display.showValues(lambda x: sorted(x, key=x[2])))
 
 
 ```
@@ -103,12 +105,13 @@ Assume that you have a spreadsheet object, S, which has location data in the fir
 
 Explain list comprehensions. Give examples and show equivalents with `map` and `filter`. How do their capabilities compare? Also demonstrate set comprehensions and dictionary comprehensions.
 
-List comprehensions are awesome - it's a way of constructing lists by giving a formula for each term, and the syntax is close to mathematical notation (yay!). The main limitation (and what makes it not as powerful for certain scenarios) is the clarity and flexibility with which you can increment over a given range. The syntax for list comprehensions cannot process complex statements (past for and if loops), while the lambda used by map/filter can process a dynamic
-function passed in at runtime.
+List comprehensions are a way of constructing lists by giving a formula for each term, and the syntax is close to mathematical notation (yay!). The main limitation (and what makes it not as powerful for certain scenarios) is the clarity and flexibility with which you can increment over a given range. The syntax for list comprehensions cannot process complex statements (any statements setting external variables or interacts dynamically with input outside of the construct or any dynamically defined functions), while the lambda used by map/filter can process a dynamic function passed in at runtime.
 
 For example, the following functions output equivalent code:
 
 ```
+# Display the last valid index of each word:
+
 listEx = 'Metis is the best'.split()
 
 def listComp():
@@ -118,10 +121,20 @@ def mapList():
     print map(lambda word: word[len(word)-1], listEx)
 ```
 
-Set and dictionary comprehensions:
+Set and dictionary comprehensions similarly construct sets and dictionaries by taking values and key/value doubles, respectively, determined by passed function.
 
 ```
-# Dictionary comprehensions take an argument for the key # for a particular value and assign it programmatically.
+def setComp():
+	print {len(x)-1 for x in set(listEx)}
+
+# Assume that now, we wish to show the last valid index of each word as the value. 
+
+numberedDict = [i:listEx[i] for i in listEx]
+
+def dictComp():
+	print [word:len(word)-1 for (num, word) in numberedDict]
+
+# More generally, dictionary comprehensions take an argument for the key for a particular value and assign it programmatically.
 
 diction={x: x**2 for x in range(5,10)}
 
@@ -133,33 +146,38 @@ diction={x: x**2 for x in range(5,10)}
 
 ###Q5. Datetime
 Use Python to compute days between start and stop date.   
-a.  
+
+a.  Difference = 937 days:
 
 ```
+import datetime
+
 date_start = '01-02-2013'    
 date_stop = '07-28-2015'
-```
-```
-from datetime import *
-difference = datetime.datetime.strptime(date_stop,%m-%d-%Y) - datetime.datetime.strptime(date_start)
 
+def dashTimeMDY(s):
+    return datetime.datetime.strptime(s,'%m-%d-%Y')
+
+difference = dashTimeMDY(date_stop) - dashTimeMDY(date_start)
+print difference
 ```
 
-b.  
+b.  Difference = 513 days
 ```
 date_start = '12312013'  
 date_stop = '05282015'  
+difference = datetime.datetime.strptime(date_stop,'%m%d%Y') - datetime.datetime.strptime(date_start,'%m%d%Y')
+print difference
 ```
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE (answer will be in number of days)
-
-c.  
+c.  Difference = 7850 days
 ```
 date_start = '15-Jan-1994'      
 date_stop = '14-Jul-2015'  
-```
+d = lambda t: datetime.datetime.strptime(t,'%d-%b-%Y')
+print d(date_stop)-d(date_start)
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE  (answer will be in number of days)
+```
 
 Place code in this file: [q5_datetime.py](python/q5_datetime.py)
 

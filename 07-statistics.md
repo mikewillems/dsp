@@ -70,14 +70,20 @@ Bayes' Theorem is an important tool in understanding what we really know, given 
 
 Elvis Presley had a twin brother who died at birth.  What is the probability that Elvis was an identical twin? Assume we observe the following probabilities in the population: fraternal twin is 1/125 and identical twin is 1/300.  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Answer: To make things easier, we note that 1/125 = 12/1500, and 1/300 = 5/1500. We know that elvis was a twin, and thus the probability that he was an identical twin is the chance that anyone would be an identical twin out of the chance that anyone would be a twin at all. This is 5/(12+5) = 5/17 &asymp; 0.294 
+
+This is a question that clearly demonstrates the concept behind Bayesian reasoning - that a prior gives you the ability to confine the domain of the problem space, and that you wish to search within the range of that domain, not the whole co-domain. The "twin" transformation maps the whole population onto the codomain - a ternary map of whether or not each individual is an identical twin, fraternal twin, or not a twin. Only the (random) portion of the domain which maps onto either fraternal or identical needs be considered, and of that subdomain, the range is one 300th plus one 125th of the codomain. So a point in that subdomain must map to somewhere in that range.
+
+Getting mathematical, the prior, A, is that elvis is a twin. The probability of this with no other informaiton is 17/1500. The probability that someone is an identical twin is 1/300=5/1500. The probability that elvis was an identical twin given that he was a twin at all is the probability that he was an identical twin divided by the probability that he could have been a twin at all. p(B|A) = p(B)/P(A). Note that this is because the probability that elvis was a twin is 100%, so the P(A|B) term drops out. The fact that we can know this with certainty, in fact, makes this an easily understandable but relatively poor example of Bayesian statistics.
 
 ---
 
 ###Q6. Bayesian &amp; Frequentist Comparison  
 How do frequentist and Bayesian statistics compare?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Bayesian statistics are primarily different from frequentist statistics in that the former assumes knowledge of a prior probability. That is, estimates are required for the true probability of an event and for conditional probabilities given priors. Rather than being merely artifacts of the data themselves, these priors can depend on the experimenter and the amount of _information_ they have about the events. For example, in the previous question, we _know_ that Elvis was a twin. In most situations, this observed possibility would be uncertain, but have a known probability in order to be a good candidate for Bayesian analysis.
+
+Frequentist statistics, on the other hand, assume no prior knowledge, and accounts for both observed and unobserved data. It tends to be less computationally intensive than Bayesian analysis also.
 
 ---
 
@@ -89,7 +95,7 @@ The following exercises are optional, but we highly encourage you to complete th
 In this exercise, you will compute the effect size of correlation.  Correlation measures the relationship of two variables, and data science is about exploring relationships in data.    
 
 ###Q8. [Think Stats Chapter 8 Exercise 2](statistics/8-2-sampling_dist.md) (sampling distribution)
-In the theoretical world, all data related to an experiment or a scientific problem would be available.  In the real world, some subset of that data is available.  This exercise asks you to take samples from an exponential distribution and examine how the standard error and confidence intervals vary with the sample size.
+In the theoretical world, all data related to an experiment or a scientific problem would be available.  In the real world, some nsubset of that data is available.  This exercise asks you to take samples from an exponential distribution and examine how the standard error and confidence intervals vary with the sample size.
 
 ###Q9. [Think Stats Chapter 6 Exercise 1](statistics/6-1-household_income.md) (skewness of household income)
 ###Q10. [Think Stats Chapter 8 Exercise 3](statistics/8-3-scoring.md) (scoring)
